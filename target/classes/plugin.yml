@@ -1,0 +1,4 @@
+name: Atlas
+main: middle.atlas.Atlas
+version: 0.0.0.1
+load: startup
