@@ -58,7 +58,6 @@ public class DatabaseHelper {
 		try {
 			st = databaseConnection.get().createStatement();
 		} catch (SQLException e) {
-			// ahhh shit
 			e.printStackTrace();
 			databaseConnection.release();
 			return null;
@@ -66,7 +65,6 @@ public class DatabaseHelper {
 		try {
 			returnable = st.executeQuery(sqlString);
 		} catch (SQLException e) {
-			// ahhh shitttttttt
 			e.printStackTrace();
 			databaseConnection.release();
 			return null;
@@ -74,5 +72,17 @@ public class DatabaseHelper {
 
 		databaseConnection.release();
 		return returnable;
+	}
+
+	public void setupTable(String table, String parameters) {
+		try {
+			if (!manager.hasTable(table)) {
+				String sqlString = "CREATE TABLE " + plugin.dbPrefix + " (" + parameters + ");";
+				manager.runInstantTask(new DatabaseTask(sqlString));
+			}
+		} catch (SQLException e) {
+			//This is a problem.
+			e.printStackTrace();
+		}	
 	}
 }

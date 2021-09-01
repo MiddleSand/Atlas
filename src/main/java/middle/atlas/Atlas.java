@@ -69,8 +69,8 @@ public class Atlas extends JavaPlugin {
 	}
 	
 	/** - Getter for the database helper */
-	public DatabaseManager getDatabaseHelper() {
-		return databaseManager;
+	public static DatabaseHelper getDatabaseHelper() {
+		return databaseHelper;
 	}
 	
 	/** - Sets up the database on init; Run on enable / plugin reload *if you want* */
